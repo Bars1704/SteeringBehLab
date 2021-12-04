@@ -47,7 +47,7 @@ public class SteeringBehs : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var steering = Seek();
+        var steering = Seek(target.position);
         steering = Truncrate(steering, _shrapness);
         Velocity = Truncrate(steering + Velocity, MaxSpeed);
 
