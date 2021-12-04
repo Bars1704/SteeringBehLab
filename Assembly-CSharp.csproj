@@ -52,7 +52,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\SteeringBehs.cs" />
+     <Compile Include="Assets\Scripts\SteeringBehaviour.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Abstractions\IMovingState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Abstractions\UnityMovingState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Abstractions\SeekableMovingState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Realisations\PursuitState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Realisations\SeekState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Realisations\WanderState.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
