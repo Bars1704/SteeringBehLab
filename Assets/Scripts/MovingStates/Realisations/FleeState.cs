@@ -1,11 +1,17 @@
 using UnityEngine;
 
-public class SeekState : SeekableMovingState
+public class FleeState : SeekableMovingState
 {
     private Transform _target;
 
-    public override Vector3 GetSpeed() => Seek(_target.position);
+    public FleeState(Transform transform, Vector3 startVelocity, float maxSpeed, Transform target)
+        : base(transform, startVelocity, maxSpeed)
+    {
+        _target = target;
+    }
 
+    public override Vector3 GetSpeed() => Flee(_target.position);
+    
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -13,11 +19,5 @@ public class SeekState : SeekableMovingState
         Gizmos.DrawLine(CurrentPos, _target.position);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(CurrentPos, GetSpeed());
-    }
-
-    public SeekState(Transform transform, Vector3 startVelocity, float maxSpeed, Transform target)
-        : base(transform, startVelocity, maxSpeed)
-    {
-        _target = target;
     }
 }

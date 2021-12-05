@@ -18,7 +18,7 @@ public class PursuitState : SeekableMovingState
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawLine(CurrentPos, _seekingPos);
         Gizmos.DrawWireSphere(_seekingPos, 0.2f);
     }
