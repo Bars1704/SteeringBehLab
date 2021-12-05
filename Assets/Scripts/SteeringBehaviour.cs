@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class SteeringBehaviour : MonoBehaviour
@@ -12,21 +13,23 @@ public abstract class SteeringBehaviour : MonoBehaviour
     private List<UnityMovingState> _currentStates;
 
     private Vector3 prevVelocity;
+
     public void Move()
     {
         _currentStates = GetMovingStates();
 
         var steering = Vector3.zero;
         _currentStates.ForEach(x => steering += x.CalculatedSpeed);
-        
+
         steering *= _shrapness;
-        velocity = UnityMovingState.Truncate(steering + velocity, _maxSpeed);
+        var maxSpeed = _currentStates.Max(x => x.MaxVelocity);
+        velocity = UnityMovingState.Truncate(steering + velocity, maxSpeed);
 
         Debug.Log($"steering {steering.magnitude} velocity {velocity.magnitude}");
 
         _currentStates.ForEach(x => x.Velocity = velocity);
-
-        transform.Translate(UnityMovingState.Truncate(velocity, _maxSpeed) * Time.fixedDeltaTime);
+        
+        transform.Translate(velocity * Time.fixedDeltaTime);
     }
 
     private void FixedUpdate()
