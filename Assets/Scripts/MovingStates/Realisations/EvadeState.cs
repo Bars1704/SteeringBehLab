@@ -30,5 +30,5 @@ public class EvadeState : SeekableMovingState
     }
 
 
-    public override Vector3 GetSpeed() => Flee(_evadingPos);
+    protected override Vector3 GetSpeed() => Flee(_evadingPos);
 }

@@ -11,7 +11,7 @@ public class WanderState : UnityMovingState
     private Vector3 _circleCoord;
 
 
-    public override Vector3 GetSpeed()
+    protected override Vector3 GetSpeed()
     {
         _circleCoord = CurrentPos + Velocity.normalized * _circleDistance;
         _wonderAngle += Random.Range(-_shake, _shake);

@@ -10,36 +10,29 @@ public abstract class SteeringBehaviour : MonoBehaviour
     protected Vector3 velocity = Vector3.zero;
     protected abstract List<UnityMovingState> GetMovingStates();
     private List<UnityMovingState> _currentStates;
+
+    private Vector3 prevVelocity;
     public void Move()
     {
         _currentStates = GetMovingStates();
 
         var steering = Vector3.zero;
-        _currentStates.ForEach(x => steering += x.GetSpeed());
+        _currentStates.ForEach(x => steering += x.CalculatedSpeed);
         
-        steering = Truncate(steering, _shrapness);
-        velocity = Truncate(steering + velocity, _maxSpeed);
-        
-        Debug.Log($"steering {steering}");
-        Debug.Log($"velocity {velocity}");
-        
+        steering *= _shrapness;
+        velocity = UnityMovingState.Truncate(steering + velocity, _maxSpeed);
+
+        Debug.Log($"steering {steering.magnitude} velocity {velocity.magnitude}");
+
         _currentStates.ForEach(x => x.Velocity = velocity);
 
-        transform.Translate(Truncate(velocity, _maxSpeed) * Time.fixedDeltaTime);
+        transform.Translate(UnityMovingState.Truncate(velocity, _maxSpeed) * Time.fixedDeltaTime);
     }
 
     private void FixedUpdate()
     {
         _currentStates = GetMovingStates();
         Move();
-    }
-
-    private Vector3 Truncate(Vector3 vector, float dist)
-    {
-        if (vector.magnitude > dist)
-            return vector.normalized * dist;
-        else
-            return vector;
     }
 
     protected virtual void OnDrawGizmos()

@@ -10,7 +10,7 @@ public class FleeState : SeekableMovingState
         _target = target;
     }
 
-    public override Vector3 GetSpeed() => Flee(_target.position);
+    protected override Vector3 GetSpeed() => Flee(_target.position);
 
     public override void OnDrawGizmos()
     {

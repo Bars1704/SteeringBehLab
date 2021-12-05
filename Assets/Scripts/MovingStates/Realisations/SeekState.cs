@@ -4,7 +4,7 @@ public class SeekState : SeekableMovingState
 {
     private Transform _target;
 
-    public override Vector3 GetSpeed() => Seek(_target.position);
+    protected override Vector3 GetSpeed() => Seek(_target.position);
 
     public override void OnDrawGizmos()
     {

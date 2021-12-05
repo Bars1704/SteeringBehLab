@@ -10,9 +10,12 @@ public class Bunny : SteeringBehaviour
 
     private void Start()
     {
-        _wonderState = new WanderState(transform, velocity, _maxSpeed/3, 7, 7, 15);
+        _wonderState = new WanderState(transform, velocity, _maxSpeed / 1.5f, 5, 3, 5);
         _insideBoxState =
-            new InsideBoxState(transform, velocity, _maxSpeed/2, new Rect(-Vector2.one * 50, Vector2.one * 100));
+            new InsideBoxState(transform, velocity, _maxSpeed / 1.5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
+
+        _insideBoxState.OnEndAvoid +=
+            () => _wonderState = new WanderState(transform, velocity, _maxSpeed / 1.5f, 5, 3, 5);
     }
 
     protected override List<UnityMovingState> GetMovingStates()

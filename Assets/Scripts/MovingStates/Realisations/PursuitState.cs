@@ -13,7 +13,7 @@ public class PursuitState : SeekableMovingState
         }
     }
 
-    public override Vector3 GetSpeed() => Seek(_seekingPos);
+    protected override Vector3 GetSpeed() => Seek(_seekingPos);
 
     public override void OnDrawGizmos()
     {

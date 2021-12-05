@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,11 @@ public class InsideBoxState : SeekableMovingState
 {
     private readonly Rect _box;
     private readonly List<Vector3> _corners;
+
+    public event Action OnBeginAvoid;
+    public event Action OnEndAvoid;
+
+    private List<Vector3> DistractionForces = new List<Vector3>();
 
     public InsideBoxState(Transform transform, Vector3 startVelocity, float maxSpeed, Rect box) :
         base(transform, startVelocity, maxSpeed)
@@ -37,10 +43,18 @@ public class InsideBoxState : SeekableMovingState
         };
     }
 
-    public override Vector3 GetSpeed()
+    protected override Vector3 GetSpeed()
     {
         var result = Vector3.zero;
-        GetDistractionPoints().ForEach(x => result += Seek(x));
+        var distr = GetDistractionPoints();
+
+        if (distr.Count > DistractionForces.Count)
+            OnBeginAvoid?.Invoke();
+        if (distr.Count < DistractionForces.Count)
+            OnEndAvoid?.Invoke();
+
+        DistractionForces = distr;
+        DistractionForces.ForEach(x => result += Seek(x));
         return result;
     }
 
@@ -50,5 +64,6 @@ public class InsideBoxState : SeekableMovingState
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(_box.center, _box.size);
         Gizmos.color = Color.magenta;
-        GetDistractionPoints().ForEach(x => Gizmos.DrawLine(CurrentPos, CurrentPos + Seek(x)/10)); }
+        GetDistractionPoints().ForEach(x => Gizmos.DrawLine(CurrentPos, CurrentPos + Seek(x) / 10));
+    }
 }

@@ -17,7 +17,16 @@ public abstract class UnityMovingState
         MaxVelocity = maxSpeed;
     }
 
-    public abstract Vector3 GetSpeed();
+    public static Vector3 Truncate(Vector3 vector, float dist)
+    {
+        if (vector.magnitude > dist)
+            return vector.normalized * dist;
+        else
+            return vector;
+    }
+
+    public Vector3 CalculatedSpeed => Truncate(GetSpeed(), MaxVelocity);
+    protected abstract Vector3 GetSpeed();
 
     public virtual void OnDrawGizmos()
     {
