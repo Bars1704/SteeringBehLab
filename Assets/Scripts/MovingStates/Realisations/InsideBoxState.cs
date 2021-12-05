@@ -50,7 +50,7 @@ public class InsideBoxState : SeekableMovingState
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(_box.center, _box.size);
         Gizmos.color = Color.magenta;
-        GetDistractionPoints().ForEach(x => Gizmos.DrawLine(CurrentPos, CurrentPos + Flee(x)));
+        GetDistractionPoints().ForEach(x => Gizmos.DrawLine(CurrentPos, CurrentPos + Seek(x)));
         GetDistractionPoints().ForEach(x => Gizmos.DrawWireSphere(x, 0.5f));
     }
 }
