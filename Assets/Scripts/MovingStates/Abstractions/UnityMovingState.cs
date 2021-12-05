@@ -21,6 +21,7 @@ public abstract class UnityMovingState
 
     public virtual void OnDrawGizmos()
     {
+        Gizmos.color = Color.white;
         Gizmos.DrawLine(CurrentPos, (CurrentPos + Velocity * _gizmosLengthMultiplier));
     }
 }

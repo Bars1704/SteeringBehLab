@@ -319,10 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 5
-  _shrapness: 1
-  _gizmosLengthMultiplier: 0.5
-  _deadZoneRadius: 3.37
-  target: {fileID: 1739151534}
+  _shrapness: 0.1
 --- !u!212 &1286233807
 SpriteRenderer:
   m_ObjectHideFlags: 0

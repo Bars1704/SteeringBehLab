@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\MovingStates\Realisations\WanderState.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Realisations\FleeState.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Realisations\EvadeState.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Realisations\InsideBoxState.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
