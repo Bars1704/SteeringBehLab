@@ -1,42 +1,37 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class SteeringBehaviour : MonoBehaviour
+public abstract class SteeringBehaviour : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float _maxSpeed = 5;
-    [SerializeField, Min(0)] private float _shrapness = 0.5f;
+    [SerializeField, Min(0)] protected float _maxSpeed = 5;
+    [SerializeField, Min(0)] protected float _shrapness = 0.5f;
 
-    protected List<UnityMovingState> currentStates;
-
-    private void Start()
+    protected Vector3 velocity = Vector3.zero;
+    protected abstract List<UnityMovingState> GetMovingStates();
+    private List<UnityMovingState> _currentStates;
+    public void Move()
     {
-        currentStates = new List<UnityMovingState>()
-        {
-            new InsideBoxState(transform, Vector3.zero, _maxSpeed, new Rect(-Vector2.one * 50, Vector2.one * 100)),
-            new WanderState(transform, Vector3.zero, _maxSpeed, 6, 3, 5)
-        };
-    }
+        _currentStates = GetMovingStates();
 
-    public void Move(Vector3 steering)
-    {
+        var steering = Vector3.zero;
+        _currentStates.ForEach(x => steering += x.GetSpeed());
+        
         steering = Truncate(steering, _shrapness);
-        currentStates.ForEach(x => x.Velocity = Truncate(steering + x.Velocity, _maxSpeed));
-
-        var velocity = Vector3.zero;
-        currentStates.ForEach(x => velocity += x.Velocity);
+        velocity = Truncate(steering + velocity, _maxSpeed);
+        
+        Debug.Log($"steering {steering}");
+        Debug.Log($"velocity {velocity}");
+        
+        _currentStates.ForEach(x => x.Velocity = velocity);
 
         transform.Translate(Truncate(velocity, _maxSpeed) * Time.fixedDeltaTime);
     }
 
     private void FixedUpdate()
     {
-        var velocity = Vector3.zero;
-        currentStates.ForEach(x => velocity += x.GetSpeed());
-
-        Move(velocity);
+        _currentStates = GetMovingStates();
+        Move();
     }
 
     private Vector3 Truncate(Vector3 vector, float dist)
@@ -47,8 +42,8 @@ public class SteeringBehaviour : MonoBehaviour
             return vector;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
-        currentStates?.ForEach(x => x.OnDrawGizmos());
+        _currentStates?.ForEach(x => x.OnDrawGizmos());
     }
 }

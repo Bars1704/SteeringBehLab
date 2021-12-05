@@ -11,13 +11,13 @@ public class FleeState : SeekableMovingState
     }
 
     public override Vector3 GetSpeed() => Flee(_target.position);
-    
+
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.red;
         Gizmos.DrawLine(CurrentPos, _target.position);
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(CurrentPos, GetSpeed());
+        Gizmos.DrawLine(CurrentPos, CurrentPos + GetSpeed());
     }
 }
