@@ -6,23 +6,23 @@ public class Bunny : SteeringBehaviour
     [SerializeField] private float _detectionCirlceRadius = 6;
 
     private InsideBoxState _insideBoxState;
-    private WanderState _wonderState;
+    private WanderState _wanderState;
 
     private void Start()
     {
-        _wonderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
+        _wanderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
         _insideBoxState =
             new InsideBoxState(transform, velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
 
         _insideBoxState.OnEndAvoid +=
-            () => _wonderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
+            () => _wanderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
     }
 
     protected override List<UnityMovingState> GetMovingStates()
     {
         var c = Physics2D.OverlapCircleAll(transform.position, _detectionCirlceRadius);
         if (c.Length <= 1)
-            return new List<UnityMovingState>() { _wonderState, _insideBoxState };
+            return new List<UnityMovingState>() { _wanderState, _insideBoxState };
         else
             return new List<UnityMovingState>()
             {
