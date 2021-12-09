@@ -724,6 +724,12 @@
  <Reference Include="Unity.2D.SpriteShape.Runtime">
  <HintPath>D:/CODE/C#/SteeringBehLab/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>D:/CODE/C#/SteeringBehLab/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>D:/CODE/C#/SteeringBehLab/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
