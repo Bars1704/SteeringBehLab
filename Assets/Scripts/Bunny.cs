@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Bunny : SteeringBehaviour
+public class Bunny : AnimalBase
 {
     [SerializeField] private float _detectionCirlceRadius = 6;
 
@@ -14,13 +15,13 @@ public class Bunny : SteeringBehaviour
         _insideBoxState =
             new InsideBoxState(transform, velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
 
-        _insideBoxState.OnEndAvoid +=
-            () => _wonderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
+        _insideBoxState.OnEndAvoid += _wonderState.Reset;
     }
 
     protected override List<UnityMovingState> GetMovingStates()
     {
-        var c = Physics2D.OverlapCircleAll(transform.position, _detectionCirlceRadius);
+        var c = Physics2D.OverlapCircleAll(transform.position, _detectionCirlceRadius)
+                                            .Where(x=>!x.isTrigger).ToArray();
         if (c.Length <= 1)
             return new List<UnityMovingState>() { _wonderState, _insideBoxState };
         else

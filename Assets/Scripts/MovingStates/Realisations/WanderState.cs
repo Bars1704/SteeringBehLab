@@ -1,4 +1,4 @@
-    using UnityEngine;
+using UnityEngine;
 
 public class WanderState : UnityMovingState
 {
@@ -9,6 +9,14 @@ public class WanderState : UnityMovingState
     private float _wonderAngle;
     private Vector3 _wonderVector;
     private Vector3 _circleCoord;
+
+    public void Reset()
+    {
+        Debug.Log("Reset");
+        _wonderAngle = default;
+        _wonderVector = default;
+        _circleCoord = default;
+    }
 
 
     protected override Vector3 GetSpeed()

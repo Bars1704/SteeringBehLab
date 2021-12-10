@@ -24,9 +24,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
         steering *= _shrapness;
         var maxSpeed = _currentStates.Max(x => x.MaxVelocity);
         velocity = UnityMovingState.Truncate(steering + velocity, maxSpeed);
-
-        Debug.Log($"steering {steering.magnitude} velocity {velocity.magnitude}");
-
+        
         _currentStates.ForEach(x => x.Velocity = velocity);
         
         transform.Translate(velocity * Time.fixedDeltaTime);
