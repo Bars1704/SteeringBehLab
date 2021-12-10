@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5560836899470313150}
   - component: {fileID: 5560836899470313151}
-  - component: {fileID: 5560836899470313144}
+  - component: {fileID: 6790622930313050507}
   m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
@@ -45,34 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9d8ac23627e1748a550b6cee3c6ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectSize: 100
-  _animalsFabric: {fileID: 0}
---- !u!61 &5560836899470313144
-BoxCollider2D:
+  RectSize: 120
+  _animalsFabric: {fileID: 6790622930313050507}
+--- !u!114 &6790622930313050507
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5560836899470313149}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 120, y: 120}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda94d9d9667bff4b9cf31fa72e9473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameField: {fileID: 5560836899470313151}
+  _spawningSettings:
+  - AnimalBase: {fileID: 8076813691161563628, guid: fd8546760511675469ca21e22b14b530, type: 3}
+    Count: 20
 --- !u!1 &5560836899706564385
 GameObject:
   m_ObjectHideFlags: 0

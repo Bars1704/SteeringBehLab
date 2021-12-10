@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunny : SteeringBehaviour
+public class Bunny : AnimalBase
 {
     [SerializeField] private float _detectionCirlceRadius = 6;
 
@@ -14,8 +14,7 @@ public class Bunny : SteeringBehaviour
         _insideBoxState =
             new InsideBoxState(transform, velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
 
-        _insideBoxState.OnEndAvoid +=
-            () => _wanderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
+        _insideBoxState.OnEndAvoid += _wanderState.Reset;
     }
 
     protected override List<UnityMovingState> GetMovingStates()
