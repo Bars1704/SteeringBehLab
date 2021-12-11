@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
 
     private Vector2 _moveDirection;
-
+    
     private void Update()
     {
         ProcessInputs();
