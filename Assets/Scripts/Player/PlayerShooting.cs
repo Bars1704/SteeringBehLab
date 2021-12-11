@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField, Min(0)] private int _bulletLifetime;
     [SerializeField, Min(0)] private float _bulletForce;
     [SerializeField, Min(0)] private int _ammo;
-    [SerializeField] private TextMeshProUGUI _ammoIndicator;
+    public event Action<int> OnAmmoChanged;
     private int _currentAmmo;
 
     public void Reset()
@@ -24,9 +25,9 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+        UpdateUI();
         CheckForOutOfAmmo();
         ProcessInput();
-        UpdateUI();
     }
 
     private void Shoot()
@@ -64,7 +65,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void UpdateUI()
     {
-        _ammoIndicator.text = _currentAmmo.ToString();
+        OnAmmoChanged?.Invoke(_currentAmmo);
     }
 
     private void CheckForOutOfAmmo()
