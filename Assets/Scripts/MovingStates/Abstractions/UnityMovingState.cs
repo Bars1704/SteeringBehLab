@@ -6,7 +6,7 @@ public abstract class UnityMovingState
 {
     protected const float _gizmosLengthMultiplier = 5;
     protected Transform Transform;
-    public float MaxVelocity { get; }
+    public float MaxVelocity { protected set; get; }
     public Vector3 CurrentPos => Transform.position;
     public Vector3 Velocity { get; set; }
 

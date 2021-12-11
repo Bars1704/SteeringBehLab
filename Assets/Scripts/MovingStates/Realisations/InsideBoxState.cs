@@ -12,11 +12,12 @@ public class InsideBoxState : SeekableMovingState
     public event Action OnEndAvoid;
 
     private List<Vector3> DistractionForces = new List<Vector3>();
+
     public InsideBoxState(Transform transform, Vector3 startVelocity, float maxSpeed, Rect box) :
         base(transform, startVelocity, maxSpeed)
     {
         _box = box;
-
+        MaxVelocity = maxSpeed * 3;
         _corners = new List<Vector3>
         {
             new Vector3(_box.xMin, _box.yMax, CurrentPos.z),
