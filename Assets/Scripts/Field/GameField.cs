@@ -9,21 +9,28 @@ public class GameField : MonoBehaviour
 
     [SerializeField] private AnimalsFabric _animalsFabric;
 
-    
+    [SerializeField] private Player _player;
+
     private void FixedUpdate()
     {
         var killable = new List<IKillable>();
-        
-        foreach (var animal in _animalsFabric.Animals)
-        {
-            var magnitude = animal.transform.position - transform.position;
-            magnitude.x = Mathf.Abs(magnitude.x);
-            magnitude.y = Mathf.Abs(magnitude.y);
 
-            if (magnitude.x > Size.x / 2 || magnitude.y > Size.y / 2)
+        if (IsOutsideBox(_player.transform))
+            killable.Add(_player);
+
+        foreach (var animal in _animalsFabric.Animals)
+            if (IsOutsideBox(animal.transform))
                 killable.Add(animal);
-        }
-        
-        killable.ForEach(x=>x.Kill());
+
+        killable.ForEach(x => x.Kill());
+    }
+
+    private bool IsOutsideBox(Transform target)
+    {
+        var magnitude = target.position - transform.position;
+        magnitude.x = Mathf.Abs(magnitude.x);
+        magnitude.y = Mathf.Abs(magnitude.y);
+
+        return (magnitude.x > Size.x / 2 || magnitude.y > Size.y / 2);
     }
 }
