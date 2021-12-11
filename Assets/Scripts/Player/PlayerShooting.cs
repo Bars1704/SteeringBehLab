@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.TerrainAPI;
 using UnityEngine.Serialization;
@@ -5,9 +6,8 @@ using UnityEngine.Serialization;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private Rigidbody2D _bulletRb;
-    [SerializeField] private Transform _bulletsContainer;
-    
+    [SerializeField] private ObjectsPool _bulletsPool;
+    [SerializeField, Min(0)] private int _bulletLifetime;
     [SerializeField, Min(0)] private float _bulletForce;
 
     private void Update()
@@ -20,7 +20,18 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        var bullet = Instantiate(_bulletRb, _firePoint.position, _firePoint.rotation, _bulletsContainer);
-        bullet.AddForce(_firePoint.up * _bulletForce, ForceMode2D.Impulse);
+        var bullet = _bulletsPool.GetObject();
+        bullet.transform.position = _firePoint.position;
+        bullet.transform.rotation = _firePoint.rotation;
+        
+        bullet.GetComponent<Rigidbody2D>().AddForce(_firePoint.up * _bulletForce, ForceMode2D.Impulse);
+        StartCoroutine(BulletTimer(bullet));
+    }
+
+    private IEnumerator BulletTimer(GameObject obj)
+    {
+        yield return new WaitForSeconds(_bulletLifetime);
+        
+        _bulletsPool.ReturnObject(obj);
     }
 }
