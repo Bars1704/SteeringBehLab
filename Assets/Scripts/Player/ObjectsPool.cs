@@ -22,15 +22,11 @@ public class ObjectsPool : MonoBehaviour
 
     public GameObject GetObject()
     {
-        var availableObjIndex = _objectsPool.FindIndex(o => !o.activeSelf);
+        var availableObj = _objectsPool.FirstOrDefault(o => !o.activeSelf);
 
-        if (availableObjIndex != -1)
+        if (availableObj != default)
         {
-            var availableObj = _objectsPool[availableObjIndex];
             availableObj.SetActive(true);
-            
-            _objectsPool.RemoveAt(availableObjIndex);
-            
             return availableObj;
         }
 

@@ -14,7 +14,7 @@ public class Bunny : AnimalBase
         _insideBoxState =
             new InsideBoxState(transform, Velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
 
-        _insideBoxState.OnEndAvoid += _wanderState.Reset;
+        _insideBoxState.OnEndAvoid += _wanderState.Random;
     }
 
     protected override List<UnityMovingState> GetMovingStates()

@@ -10,11 +10,11 @@ public class WanderState : UnityMovingState
     private Vector3 _wonderVector;
     private Vector3 _circleCoord;
 
-    public void Reset()
+    public void Random()
     {
         Debug.Log("Reset");
-        _wonderAngle = default;
-        _wonderVector = default;
+        _wonderAngle = UnityEngine.Random.Range(0f, 360f);
+        _wonderVector = UnityEngine.Random.insideUnitCircle * 5f;
         _circleCoord = default;
     }
 
@@ -22,7 +22,7 @@ public class WanderState : UnityMovingState
     protected override Vector3 GetSpeed()
     {
         _circleCoord = CurrentPos + Velocity.normalized * _circleDistance;
-        _wonderAngle += Random.Range(-_shake, _shake);
+        _wonderAngle += UnityEngine.Random.Range(-_shake, _shake);
         _wonderVector = Quaternion.Euler(0, 0, _wonderAngle) * (_circleCoord.normalized * _circleRadius);
 
         return _circleCoord - CurrentPos + _wonderVector;
