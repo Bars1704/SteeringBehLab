@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\MovingStates\Realisations\SeekState.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Abstractions\UnityMovingState.cs" />
      <Compile Include="Assets\Scripts\Animals\AnimalBase.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
