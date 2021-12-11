@@ -19,8 +19,11 @@ public class PursuitState : SeekableMovingState
 
     protected override Vector3 GetSpeed()
     {
-        if((CurrentPos - _target.Position).sqrMagnitude <= REACH_DISTANCE)
+        if ((CurrentPos - _target.Position).sqrMagnitude <= REACH_DISTANCE)
+        {
             OnReach?.Invoke(_target);
+            return Vector3.zero;
+        }
         return Seek(_seekingPos);
     }
 
