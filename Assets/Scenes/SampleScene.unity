@@ -606,23 +606,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[0].Count
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[1].Count
-      value: 24
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[2].Count
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[1].FlockSize
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[2].FlockSize
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[1].AnimalBase
@@ -631,14 +631,14 @@ PrefabInstance:
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[2].AnimalBase
       value: 
-      objectReference: {fileID: 1641874984407240868, guid: 661e459a90a9b1b43a624ec5e0f98c9a, type: 3}
+      objectReference: {fileID: 4821146322855319244, guid: c6c2e4e562204768bbc26513a486ef7f, type: 3}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[1].IsFlockAnimal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6790622930313050507, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
       propertyPath: _spawningSettings.Array.data[2].IsFlockAnimal
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a68dddd90d18b740a693204ace14a3e, type: 3}
