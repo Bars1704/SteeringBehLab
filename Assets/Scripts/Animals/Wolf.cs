@@ -51,7 +51,7 @@ public class Wolf : AnimalBase
             .FirstOrDefault(x =>
             {
                 var comp = x.GetComponent<IPursuitable>();
-                return comp != default && comp != this as IPursuitable;
+                return comp != default && !(comp is Wolf) ;
             });
 
         var defaultResult = new List<UnityMovingState> { _wanderState, _insideBoxState };
