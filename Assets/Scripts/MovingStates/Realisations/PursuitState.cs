@@ -26,15 +26,7 @@ public class PursuitState : SeekableMovingState
         }
         return Seek(_seekingPos);
     }
-
-    public override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(CurrentPos, _seekingPos);
-        Gizmos.DrawWireSphere(_seekingPos, 0.2f);
-    }
-
+    
     public PursuitState(Transform transform, Vector3 startVelocity, float maxSpeed, IPursuitable target)
         : base(transform, startVelocity, maxSpeed)
     {
