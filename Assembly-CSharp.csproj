@@ -53,7 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Animals\SteeringBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Deer.cs" />
+     <Compile Include="Assets\Scripts\Animals\Deer.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Realisations\WanderState.cs" />
      <Compile Include="Assets\Scripts\Animals\Bunny.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Abstractions\IMovingState.cs" />
@@ -73,13 +73,10 @@
      <Compile Include="Assets\Scripts\Animals\IKillable.cs" />
      <Compile Include="Assets\Scripts\Animals\Wolf.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Abstractions\IPursuitable.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
-     <Compile Include="Assets\Scripts\Player\ObjectsPool.cs" />
-     <Compile Include="Assets\Scripts\Animals\IKillable.cs" />
-     <Compile Include="Assets\Scripts\Animals\Wolf.cs" />
-     <Compile Include="Assets\Scripts\MovingStates\Abstractions\IPursuitable.cs" />
-     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Player\ObjectsPool.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
