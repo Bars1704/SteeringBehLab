@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class SteeringBehaviour : MonoBehaviour
+public abstract class SteeringBehaviour : MonoBehaviour, IPursuitable
 {
     [SerializeField, Min(0)] protected float _maxSpeed = 5;
     [SerializeField, Min(0)] protected float _shrapness = 0.5f;
 
-    protected Vector3 velocity = Vector3.zero;
+    public Vector3 Velocity { get; protected set; } = Vector3.zero;
+    public Vector3 Position => transform.position;
     protected abstract List<UnityMovingState> GetMovingStates();
     private List<UnityMovingState> _currentStates;
 
     private Vector3 prevVelocity;
 
-    public void Move()
+    private void Move()
     {
         _currentStates = GetMovingStates();
 
@@ -23,11 +24,11 @@ public abstract class SteeringBehaviour : MonoBehaviour
 
         steering *= _shrapness;
         var maxSpeed = _currentStates.Max(x => x.MaxVelocity);
-        velocity = UnityMovingState.Truncate(steering + velocity, maxSpeed);
-        
-        _currentStates.ForEach(x => x.Velocity = velocity);
-        
-        transform.Translate(velocity * Time.fixedDeltaTime);
+        Velocity = UnityMovingState.Truncate(steering + Velocity, maxSpeed);
+
+        _currentStates.ForEach(x => x.Velocity = Velocity);
+
+        transform.Translate(Velocity * Time.fixedDeltaTime);
     }
 
     private void FixedUpdate()

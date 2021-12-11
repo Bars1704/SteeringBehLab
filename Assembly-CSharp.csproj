@@ -63,9 +63,13 @@
      <Compile Include="Assets\Scripts\Field\GameField.cs" />
      <Compile Include="Assets\Scripts\Animals\AnimalsFabric.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Realisations\FleeState.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Realisations\SeekState.cs" />
      <Compile Include="Assets\Scripts\MovingStates\Abstractions\UnityMovingState.cs" />
      <Compile Include="Assets\Scripts\Animals\AnimalBase.cs" />
+     <Compile Include="Assets\Scripts\Animals\Wolf.cs" />
+     <Compile Include="Assets\Scripts\MovingStates\Abstractions\IPursuitable.cs" />
+     <Compile Include="Assets\Scripts\Animals\IKillable.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -705,6 +709,12 @@
  <Reference Include="Unity.2D.IK.Runtime">
  <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Animation.Triangle.Runtime">
  <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
  </Reference>
@@ -731,12 +741,6 @@
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Runtime">
  <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.cinemachine.editor">
- <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
- </Reference>
- <Reference Include="Cinemachine">
- <HintPath>D:/University/GameDev/SteeringBehLab/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -9,9 +9,10 @@ public class GameField : MonoBehaviour
 
     [SerializeField] private AnimalsFabric _animalsFabric;
 
+    
     private void FixedUpdate()
     {
-        var animalsToKill = new List<AnimalBase>();
+        var killable = new List<IKillable>();
         
         foreach (var animal in _animalsFabric.Animals)
         {
@@ -20,9 +21,9 @@ public class GameField : MonoBehaviour
             magnitude.y = Mathf.Abs(magnitude.y);
 
             if (magnitude.x > Size.x / 2 || magnitude.y > Size.y / 2)
-                animalsToKill.Add(animal);
+                killable.Add(animal);
         }
         
-        animalsToKill.ForEach(x=>x.Kill());
+        killable.ForEach(x=>x.Kill());
     }
 }

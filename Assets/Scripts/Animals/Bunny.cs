@@ -10,9 +10,9 @@ public class Bunny : AnimalBase
 
     private void Start()
     {
-        _wanderState = new WanderState(transform, velocity, _maxSpeed / 5f, 5, 3, 5);
+        _wanderState = new WanderState(transform, Velocity, _maxSpeed / 5f, 5, 3, 5);
         _insideBoxState =
-            new InsideBoxState(transform, velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
+            new InsideBoxState(transform, Velocity, _maxSpeed / 5f, new Rect(-Vector2.one * 50, Vector2.one * 100));
 
         _insideBoxState.OnEndAvoid += _wanderState.Reset;
     }
@@ -26,7 +26,7 @@ public class Bunny : AnimalBase
             return new List<UnityMovingState>()
             {
                 _insideBoxState,
-                new FleeState(transform, velocity, _maxSpeed, c[1].transform)
+                new FleeState(transform, Velocity, _maxSpeed, c[1].transform)
             };
     }
 
