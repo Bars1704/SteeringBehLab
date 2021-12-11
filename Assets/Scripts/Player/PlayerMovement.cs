@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Camera _mainCamera;
-    
+
     private Vector2 _moveDirection;
     private Vector2 _mousePosition;
-    
+
+    public void Reset()
+    {
+        gameObject.transform.position = Vector3.zero;
+    }
+
     private void Update()
     {
         ProcessInputs();
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private void Rotate()
     {
         var lookDirection = _mousePosition - _rigidbody.position;
-        
+
         // 90 degrees offset to match unit circle
         var angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
 

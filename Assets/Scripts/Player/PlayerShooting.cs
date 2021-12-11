@@ -10,17 +10,28 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField, Min(0)] private float _bulletForce;
     [SerializeField, Min(0)] private int _ammo;
     [SerializeField] private TextMeshProUGUI _ammoIndicator;
+    private int _currentAmmo;
 
+    public void Reset()
+    {
+        _currentAmmo = _ammo;
+    }
+
+    private void Start()
+    {
+        Reset();
+    }
 
     private void Update()
     {
+        CheckForOutOfAmmo();
         ProcessInput();
         UpdateUI();
     }
 
     private void Shoot()
     {
-        if (_ammo == 0)
+        if (_currentAmmo == 0)
         {
             return;
         }
@@ -31,7 +42,7 @@ public class PlayerShooting : MonoBehaviour
 
         bullet.GetComponent<Rigidbody2D>().AddForce(_firePoint.up * _bulletForce, ForceMode2D.Impulse);
 
-        _ammo -= 1;
+        _currentAmmo -= 1;
 
         StartCoroutine(BulletTimer(bullet));
     }
@@ -53,6 +64,14 @@ public class PlayerShooting : MonoBehaviour
 
     private void UpdateUI()
     {
-        _ammoIndicator.text = _ammo.ToString();
+        _ammoIndicator.text = _currentAmmo.ToString();
+    }
+
+    private void CheckForOutOfAmmo()
+    {
+        if (_currentAmmo == 0)
+        {
+            Reset();
+        }
     }
 }
