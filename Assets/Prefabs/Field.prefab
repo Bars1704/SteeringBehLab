@@ -63,6 +63,8 @@ MonoBehaviour:
   _spawningSettings:
   - AnimalBase: {fileID: 8076813691161563628, guid: fd8546760511675469ca21e22b14b530, type: 3}
     Count: 20
+  - AnimalBase: {fileID: 1641874984407240868, guid: 661e459a90a9b1b43a624ec5e0f98c9a, type: 3}
+    Count: 15
 --- !u!1 &5560836899706564385
 GameObject:
   m_ObjectHideFlags: 0
