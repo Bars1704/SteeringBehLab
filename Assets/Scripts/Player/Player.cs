@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,10 +20,10 @@ public class Player : MonoBehaviour, IKillable, IPursuitable
 
     private void Start()
     {
-        StartCoroutine(InvisibleFrame());
         _playerSprite = GetComponent<SpriteRenderer>();
         _playerCollider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        StartCoroutine(InvisibleFrame());
     }
 
     private IEnumerator InvisibleFrame()
